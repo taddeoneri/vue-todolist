@@ -23,7 +23,7 @@ createApp({
                     comprato: false 
                 },
                 {
-                    nomeProdotto: 'insalta',
+                    nomeProdotto: 'insalata',
                     comprato: false 
                 },
                 {
@@ -39,7 +39,18 @@ createApp({
     },
     methods: {
         inserisciProdotti(){
-            
+            const nuovoProdotto = {
+                nomeProdotto: this.nuovoProdotto,
+                comprato: false
+            }
+            this.listaSpesa.push(nuovoProdotto);
+            this.nuovoProdotto = '';
+        },
+        prodottoComprato(index){
+            this.listaSpesa[index].comprato = true;
+        },
+        prodottoEliminato(index){
+            this.listaSpesa.splice(index, 1);
         }
     }
 }).mount('#app');

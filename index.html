@@ -13,17 +13,18 @@
     <div id="app">
         <h1 class="text-center my-3">Lista della spesa</h1>
         <div class="container my-4">
-            <input type="text" name="item" id="item">
+            <input type="text" name="item" id="item" v-model="nuovoProdotto" @keyup.enter="inserisciProdotti" >
             <button @click="inserisciProdotti" class="btn btn-secondary mx-3">Inserisci prodotto</button>
         </div>
         <div class="container my-4">
-            <ul>
-                <li v-for="(prodotto, index) in listaSpesa">
+            <ul v-if="listaSpesa.length > 0">
+                <li :class="prodotto.comprato ? 'alert alert-success' : ''" v-for="(prodotto, index) in listaSpesa">
                     {{prodotto.nomeProdotto}}
-                    <button class="btn btn-success m-4"><i class="fa-solid fa-check"></i></button>
-                    <button class="btn btn-danger m-2"><i class="fa-solid fa-xmark"></i></button>
+                    <button @click="prodottoComprato(index)" class="btn btn-success m-4"><i class="fa-solid fa-check"></i></button>
+                    <button @click="prodottoEliminato(index)" class="btn btn-danger m-2"><i class="fa-solid fa-xmark"></i></button>
                 </li>
             </ul>
+            <h3 v-else>Non ci sono prodotti nella lista della spesa</h3>
         </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
