@@ -20,7 +20,7 @@
                 </div>
                 <div class="d-flex flex-column align-items-center my-4">
                     <ul v-if="listaSpesa.length > 0">
-                        <li :class="prodotto.comprato ? 'alert alert-success' : ''" v-for="(prodotto, index) in listaSpesa">
+                        <li :class="{'alert alert-success': prodotto.comprato, '': !prodotto.comprato}" v-for="(prodotto, index) in listaSpesa">
                             {{prodotto.nomeProdotto}}
                             <button @click="prodottoComprato(index)" class="btn btn-success m-2"><i class="fa-solid fa-check"></i></button>
                             <button @click="prodottoEliminato(index)" class="btn btn-danger m-2"><i class="fa-solid fa-xmark"></i></button>
