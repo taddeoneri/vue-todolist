@@ -39,11 +39,11 @@ createApp({
     },
     methods: {
         inserisciProdotti(){
-            const nuovoProdotto = {
+            const nuovo = {
                 nomeProdotto: this.nuovoProdotto,
                 comprato: false
             }
-            this.listaSpesa.push(nuovoProdotto);
+            this.listaSpesa.push(nuovo);
             this.nuovoProdotto = '';
         },
         prodottoComprato(index){
